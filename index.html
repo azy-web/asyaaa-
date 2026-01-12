@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>asyaa sayanggg</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: purple;
+      color: white;
+      font-family: 'Baloo 2', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #lirik {
+      font-size: 55px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.8s;
+      z-index: 2;
+      text-shadow: 0 0 60px violet;
+    }
+
+    .flower {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: jatuh linear infinite;
+      opacity: 1.8;
+      z-index: 1;
+    }
+
+    @keyframes jatuh {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="lirik"></div>
+
+  <script>
+    const lirik = [
+      "halloo asyaaa",
+      "kamuu tauu nggaa??",
+      "kaloo kamuu tuhhh",
+      "cantikkkkk",
+      "imutttttt",
+      "baikkkkkk",
+      "pokonyaaaa kamuuu tuhhh yanggg palingg akuu sayangg",
+      "sehattt selaluuu sayangggg "
+    ];
+
+    let index = 0;
+    const box = document.getElementById("lirik");
+
+    function tampilkanLirik() {
+      box.style.opacity = 0;
+
+      setTimeout(() => {
+        box.textContent = lirik[index];
+        box.style.opacity = 1;
+        index++;
+
+        if (index < lirik.length) {
+          setTimeout(tampilkanLirik, 1000);
+        }
+      }, 800);
+    }
+
+    tampilkanLirik();
+
+    // 🌸 EFEK BUNGA BERTERBANGAN
+    function buatBunga() {
+      const bunga = document.createElement("div");
+      bunga.className = "flower";
+      bunga.textContent = "🌸";
+
+      bunga.style.left = Math.random() * 100 + "vw";
+      bunga.style.animationDuration = (5 + Math.random() * 5) + "s";
+      bunga.style.fontSize = (16 + Math.random() * 20) + "px";
+
+      document.body.appendChild(bunga);
+
+      setTimeout(() => {
+        bunga.remove();
+      }, 10000);
+    }
+
+    setInterval(buatBunga, 450);
+  </script>
+
+</body>
+</html>
